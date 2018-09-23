@@ -33,7 +33,6 @@ dotenv.load();
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const staticController = require('./controllers/static');
-const contactController = require('./controllers/contact');
 
 /**
  * API keys and Passport configuration.

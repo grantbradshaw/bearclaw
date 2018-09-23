@@ -8,8 +8,8 @@ exports.getAbout = (req, res) => {
   });
 };
 
-// exports.getContact = (req, res) => {
-//   res.render('contact', {
-//     title: 'Contact Us'
-//   });
-// };
+exports.getContact = (req, res) => {
+  res.render('contact', {
+    title: 'Contact Us'
+  });
+};

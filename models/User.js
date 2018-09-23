@@ -29,8 +29,8 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     picture: { type: String, default: '' }
   },
-  resetPasswordToken: String,
-  resetPasswordExpires: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
   scrapeIds: { type: Array, index: true }
 }, { timestamps: true });
 

@@ -32,6 +32,7 @@ dotenv.load();
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
+const staticController = require('./controllers/static');
 const contactController = require('./controllers/contact');
 
 /**
@@ -137,6 +138,7 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.get('/about', staticController.getAbout);
 
 /**
  * Error Handler.

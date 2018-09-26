@@ -7,3 +7,8 @@ exports.getScrapes = (req, res) => {
     title: 'My scrapes'
   })
 }
+
+exports.postScrapes = function(req, res) {
+  console.log(req.body);
+  res.send({success: true });
+}

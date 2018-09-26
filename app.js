@@ -88,7 +88,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
+  if (req.path === '/scrapes' && req.method === 'POST') {
+    next();
+  } else {
     lusca.csrf()(req, res, next);
+  }
 });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
@@ -139,6 +143,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.get('/about', staticController.getAbout);
 app.get('/how-to', howToController.getHowTo);
 app.get('/scrapes', passportConfig.isAuthenticated, scrapeController.getScrapes);
+app.post('/scrapes', passportConfig.isAuthenticated, scrapeController.postScrapes);
 
 /**
  * Error Handler.

@@ -2,14 +2,18 @@
   .container
     a.navbar-brand(href='/')
       i.fas.fa-cube
-      | Project name
+      | Bearclaw
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
       span.sr-only Toggle navigation
       span.navbar-toggler-icon
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.nav-item(class=(title === 'Home') ? 'active' : undefined)
-          a.nav-link(href='/') Home
+        if !user
+          li.nav-item(class=(title === 'Home') ? 'active' : undefined)
+            a.nav-link(href='/') Home
+        else
+          li.nav-item(class=(title === 'My scrapes') ? 'active' : undefined)
+            a.nav-link(href='/') Scrapes
         li.nav-item(class=(title === 'Contact') ? 'active' : undefined)
           a.nav-link(href='/contact') Contact
         li.nav-item(class=(title === 'About') ? 'active' : undefined)
@@ -21,7 +25,7 @@
           li.nav-item(class=(title === 'Create Account') ? 'active' : undefined)
             a.nav-link(href='/signup') Create Account
         else
-          li.nav-item(class=(title === 'How-To') ? 'active' : undefined)
+          li.nav-item(class=(title === 'How To') ? 'active' : undefined)
             a.nav-link(href='/how-to') How To Use
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
             a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')

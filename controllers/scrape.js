@@ -20,7 +20,7 @@ exports.getScrapes = (req, res) => {
   });
 }
 
-exports.postScrapes = function(req, res) {
+exports.postScrapes = (req, res) => {
   // console.log(req.body);
   res.send({success: true });
   req.body.forEach((selection) => {
@@ -42,6 +42,16 @@ exports.postScrapes = function(req, res) {
       console.log('-----------');
     })
   });
+}
+
+exports.deleteScrape = (req, res) => {
+  Scrape.findOne({ _id: {$in: [req.params.scrapeId]}}, (err, scrape) => {
+    if (err) {
+      return console.error(err);
+    }
+    scrape.remove();
+    res.send({ success: true });
+  })
 }
 
 

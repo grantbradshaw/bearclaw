@@ -144,6 +144,7 @@ app.get('/about', staticController.getAbout);
 app.get('/how-to', howToController.getHowTo);
 app.get('/scrapes', passportConfig.isAuthenticated, scrapeController.getScrapes);
 app.post('/scrapes', passportConfig.isAuthenticated, scrapeController.postScrapes);
+app.post('/scrapes/:scrapeId/delete', passportConfig.isAuthenticated, scrapeController.deleteScrape);
 
 /**
  * Error Handler.

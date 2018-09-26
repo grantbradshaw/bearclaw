@@ -4,7 +4,10 @@ const Scrape = require('../models/Scrape');
 const User = require('../models/User');
 const cleanNumberData = require('../helpers/clean_number_data');
 const prettyDate = require('pretty-date');
-const shorten = require('../helpers/shorten')
+const shorten = require('../helpers/shorten');
+const job_scrape = require('../jobs/scrape');
+const agenda = require('../config/agenda');
+const conditionMetNotification = require('../mailer/condition_met_notification');
 
 // Get /scrapes
 
@@ -40,6 +43,18 @@ exports.postScrapes = (req, res) => {
       console.log(scrape);
       console.log('Scrape ' + scrape.id + ' saved');
       console.log('-----------');
+      return scrape;
+    }).then((scrape) => {
+      console.log('Creating scrape job');
+        var jobName = 'scrape ' + scrape._id;
+        job_scrape(agenda, jobName);
+        agenda.every('30 seconds', jobName, { scrapeId: scrape._id });
+        return scrape;
+    }).then((scrape) => {
+      if (scrape.alert && scrape.alert.conditionMet) {
+        console.log('Condition is met. Sending email...');
+        conditionMetNotification(req, scrape); // check if this works w/ post to User
+      }
     })
   });
 }

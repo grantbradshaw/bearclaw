@@ -2,7 +2,7 @@
 
 const User = require('./User');
 const AgendaJob = require('./AgendaJob');
-// const conditionMetNotification = require('../mailer/condition_met_notification');
+const conditionMetNotification = require('../mailer/condition_met_notification');
 const mongoose = require('mongoose');
 
 var alertSchema = new mongoose.Schema({

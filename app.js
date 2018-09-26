@@ -32,7 +32,8 @@ dotenv.load();
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const staticController = require('./controllers/static');
-const howToController = require('./controllers/how_to')
+const howToController = require('./controllers/how_to');
+const scrapeController = require('./controllers/scrape')
 
 /**
  * API keys and Passport configuration.
@@ -137,6 +138,7 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/about', staticController.getAbout);
 app.get('/how-to', howToController.getHowTo);
+app.get('/scrapes', passportConfig.isAuthenticated, scrapeController.getScrapes);
 
 /**
  * Error Handler.

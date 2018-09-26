@@ -43,7 +43,7 @@ The updated price will be reflected on the main page, and new products from othe
 
 ![5](https://www.dropbox.com/s/jyuoxxhjotu7wps/Screenshot%202018-09-26%2016.32.25.png?raw=1)
 
-##### Tech Stack
+#### Tech Stack
 This application is built on a Node.js (Express) back end, MongoDB as the database, and uses jQuery for responsiveness on the front end. The application interfaces with the aforementioned Chrome extension. Other features include,
 - Job automation, checking on prices consistently
 - Leveraging Selenium WebDriver with headless Chrome to scrape web pages which load data using javascript.
